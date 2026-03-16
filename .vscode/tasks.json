@@ -1,0 +1,65 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Format all files",
+      "type": "shell",
+      "command": "/opt/homebrew/bin/swiftformat -v .",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": false,
+        "showReuseMessage": false,
+        "clear": true
+      }
+    },
+    {
+      "label": "Lint all files",
+      "type": "shell",
+      "command": "/opt/homebrew/bin/swiftlint .",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": false,
+        "showReuseMessage": false,
+      }
+    },
+    {
+      "label": "Format and lint all files",
+      "problemMatcher": [],
+      "dependsOn": [
+        "Format all files",
+        "Lint all files"
+      ],
+      "dependsOrder": "sequence"
+    },
+    {
+      "label": "Format file",
+      "type": "shell",
+      "command": "/opt/homebrew/bin/swiftformat -v ${file}",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": false,
+        "showReuseMessage": false,
+        "clear": true
+      }
+    },
+    {
+      "label": "Lint file",
+      "type": "shell",
+      "command": "/opt/homebrew/bin/swiftlint ${file}",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": false,
+        "showReuseMessage": false
+      }
+    },
+    {
+      "label": "Format and lint file",
+      "problemMatcher": [],
+      "dependsOn": [
+        "Format file",
+        "Lint file"
+      ],
+      "dependsOrder": "sequence"
+    }
+  ]
+}
